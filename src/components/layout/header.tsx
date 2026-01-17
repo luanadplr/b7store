@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { HeaderIcon } from "./header-icon";
+import { HeaderIcon } from "./header/menu-icon";
 import Link from "next/link";
 import { useState } from "react";
+import { InputBusca } from "./header/search";
 
 type MenuItem = {
   label: string;
@@ -83,7 +84,9 @@ export function Header() {
         </div>
       )}
       {/* Área da Busca versão Mobile */}
-      <div className="p-6 md:hidden">Busca Mobile ver.</div>
+      <div className="p-6 md:hidden">
+        <InputBusca />
+      </div>
     </header>
   );
 }
