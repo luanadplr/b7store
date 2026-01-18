@@ -44,13 +44,18 @@ export function Banners({ list }: { list: Banner[] }) {
           </Link>
         ))}
       </div>
-      {/* Botão de Slider */}
+
+      {/* Botão do slider */}
+
       <div className="mt-5 flex flex-row items-center justify-center gap-8">
         {list.map((banner, index) => (
           <div
             key={index}
             className={`rounded-full ${currentBanner === index ? "r h-3 w-3 bg-gray-500" : "h-2.5 w-2.5 bg-gray-300"} cursor-pointer`}
-            onClick={() => setCurrentBanner(index)}
+            onClick={() => {
+              setCurrentBanner(index);
+              clearInterval(bannerTimer);
+            }}
           ></div>
         ))}
       </div>
