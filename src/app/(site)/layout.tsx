@@ -7,7 +7,7 @@ export default function SiteLayout({
   return (
     <div className="overflow-x-hidden">
       <Header />
-      {children}
+      <main className="mx-auto w-full max-w-6xl p-6">{children}</main>
     </div>
   );
 }
