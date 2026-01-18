@@ -5,7 +5,7 @@ export default function SiteLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Header />
       {children}
     </div>

@@ -5,11 +5,9 @@ import { HeaderIcon } from "./header/menu-icon";
 import Link from "next/link";
 import { useState } from "react";
 import { InputBusca } from "./header/search";
-
-type MenuItem = {
-  label: string;
-  link: string;
-};
+import { MenuItem } from "@/types/MenuItem";
+import { MenuMobile } from "./header/menu-mobile";
+import { MenuDesktop } from "./header/menu-desktop";
 
 export function Header() {
   const menu: MenuItem[] = [
@@ -36,8 +34,11 @@ export function Header() {
               alt="B7Store"
               width={120}
               height={40}
+              className="max-w-none"
             />
           </Link>
+          {/* Menu Desktop */}
+          <MenuDesktop menu={menu} />
           {/* Área dos Botões */}
           <ul className="flex gap-4">
             <Link href={"/meus-pedidos"}>
@@ -64,27 +65,9 @@ export function Header() {
         </div>
       </div>
       {/* Menu Mobile */}
-      {openMenu && (
-        <div className="md:hidden">
-          <ul>
-            {menu.map((item) => (
-              <Link href={item.link} key={item.label}>
-                <li className="flex items-center justify-between border-b border-gray-200 p-6 text-lg text-gray-500">
-                  {item.label}
-                  <Image
-                    src={"/assets/ui/arrow-up-right.png"}
-                    alt={`Ir a categoria ${item.label}`}
-                    width={20}
-                    height={20}
-                  />
-                </li>
-              </Link>
-            ))}
-          </ul>
-        </div>
-      )}
+      {openMenu && <MenuMobile menu={menu} />}
       {/* Área da Busca versão Mobile */}
-      <div className="p-6 md:hidden">
+      <div className={`px-6 pb-6 md:hidden ${openMenu && "pt-6"}`}>
         <InputBusca />
       </div>
     </header>
