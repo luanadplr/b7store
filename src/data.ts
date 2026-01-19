@@ -22,14 +22,14 @@ export const data = {
     },
     {
       id: 3,
-      label: "Camiseta React",
+      label: "Camiseta React - Azul",
       image: "/assets/products/camiseta-react-azul.png",
       price: 29.9,
       liked: false,
     },
     {
       id: 4,
-      label: "Camiseta Laravel",
+      label: "Camiseta Laravel - Branca",
       image: "/assets/products/camiseta-laravel-branca.png",
       price: 19.9,
       liked: false,

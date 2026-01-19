@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/home/skeleton";
 import { data } from "@/data";
 import { Badge } from "@/types/Badge";
 import { Suspense } from "react";
+import { MostSold } from "@/components/products/most-sold";
 
 export default function Page() {
   const badges: Badge[] = [
@@ -41,7 +42,9 @@ export default function Page() {
       <Suspense fallback={<Skeleton />}>
         <MostViewed />
       </Suspense>
-      <Suspense fallback={<Skeleton />}></Suspense>
+      <Suspense fallback={<Skeleton />}>
+        <MostSold />
+      </Suspense>
     </div>
   );
 }
