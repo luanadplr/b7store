@@ -25,7 +25,7 @@ export default function Page() {
   return (
     <div>
       <Banners list={data.banners} />
-      <div className="mt-8 flex flex-col justify-center gap-4 md:flex-row">
+      <div className="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row">
         {badges.map((badge, index) => (
           <HomeBadge
             key={index}
