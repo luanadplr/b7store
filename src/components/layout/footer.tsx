@@ -1,45 +1,108 @@
 import Image from "next/image";
+import Link from "next/link";
+import { FooterButton } from "./footer/footer-button";
+import { MenuItem } from "@/types/MenuItem";
+import { data } from "@/data";
 
-export function Footer() {
+export const Footer = () => {
+  const menu: MenuItem[] = data.menu;
+
   return (
     <footer>
-      {/* Newsletter  */}
-      <div className="bg-white">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-5 px-6 py-16 md:flex-row md:gap-10">
-          {/* Header do Newsletter  */}
-          <div className="flex flex-col items-center gap-2 md:flex-row md:gap-0">
-            <div className="md:pr-6">
-              <Image
-                src={"/assets/ui/mail-send-line.png"}
-                alt="E-mail"
-                width={40}
-                height={40}
-              />
-            </div>
-            <div className="text-center md:text-justify">
-              <h2 className="text-lg font-bold">
-                Fique por dentro das promoções!
-              </h2>
-              <p className="text-gray-500">
-                Registre seu e-mail e seja o primeiro a saber.
-              </p>
-            </div>
+      <div className="border-t border-gray-200 bg-white px-6 py-14">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 p-6 md:flex-row">
+          <Image
+            src={"/assets/ui/mail-send-line.png"}
+            alt=""
+            width={68}
+            height={68}
+          />
+          <div className="text-center md:text-left">
+            <h3 className="mb-6 text-2xl font-bold md:mb-2">
+              Fique por dentro das promoções
+            </h3>
+            <p className="text-gray-400">
+              Coloque seu e-mail e seja o primeiro a saber
+            </p>
           </div>
-          {/* Campo do E-mail  */}
-          <div className="flex w-full flex-1 flex-col justify-end gap-2 md:flex-row">
+          <form
+            method="POST"
+            className="flex w-full flex-1 flex-col gap-4 md:flex-row"
+          >
             <input
               type="text"
-              placeholder="Qual seu E-mail?"
-              className="flex-3 rounded-sm border border-gray-200 p-3 text-sm"
+              className="flex-1 rounded-sm border border-gray-200 px-6 py-5 outline-0"
+              placeholder="Qual seu e-mail?"
             />
-            <button className="flex-1 rounded-sm bg-blue-700 p-3 text-white">
-              Enviar
-            </button>
+            <input
+              type="submit"
+              value="Enviar"
+              className="w-full rounded-sm border-0 bg-blue-600 px-6 py-5 text-white md:w-50"
+            />
+          </form>
+        </div>
+      </div>
+      <div className="bg-black text-white">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="flex flex-col items-center justify-between gap-6 border-b border-gray-700 py-16 md:flex-row md:py-10">
+            <Link href="/">
+              <Image
+                src={"/assets/ui/logo-white.png"}
+                alt="B7Store"
+                width={143}
+                height={48}
+              />
+            </Link>
+            <ul className="flex flex-col items-center gap-8 md:flex-row">
+              {menu.map((item, index) => (
+                <li key={index}>
+                  <Link href={item.link}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex flex-col gap-6 border-b border-gray-700 py-16 md:flex-row md:py-10">
+            <div className="flex-1">
+              <h4 className="mb-6 text-center md:text-left">
+                Precisa de ajuda?
+              </h4>
+              <div className="flex flex-col gap-6 md:flex-row">
+                <FooterButton
+                  href="mailto:suporte@b7web.com.br"
+                  icon="/assets/ui/mail-line.png"
+                  label="suporte@b7web.com.br"
+                />
+                <FooterButton
+                  href=""
+                  icon="/assets/ui/phone-line.png"
+                  label="(11) 99999-9999"
+                />
+              </div>
+            </div>
+            <div className="">
+              <h4 className="mb-6 text-center md:text-left">
+                Acompanhe nas redes sociais
+              </h4>
+              <div className="flex flex-row justify-between gap-6">
+                <FooterButton href="" icon="/assets/ui/instagram-line.png" />
+                <FooterButton href="" icon="/assets/ui/linkedin-line.png" />
+                <FooterButton href="" icon="/assets/ui/facebook-line.png" />
+                <FooterButton href="" icon="/assets/ui/twitter-x-fill.png" />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-between gap-14 py-16 md:flex-row md:py-10">
+            <div className="text-center text-xl md:text-left">
+              Se você leu isso aqui, saiba que está no caminho certo!
+              <br />
+              Continue estudando e você chegará lá...
+            </div>
+            <div className="flex justify-center">
+              <FooterButton href="/" icon="/assets/ui/arrow-up-line.png" />
+            </div>
           </div>
         </div>
       </div>
-      {/* Rodapé com links  */}
-      <div className="bg-black">...</div>
     </footer>
   );
-}
+};

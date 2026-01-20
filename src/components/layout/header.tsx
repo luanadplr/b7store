@@ -8,14 +8,10 @@ import { InputBusca } from "./header/search";
 import { MenuItem } from "@/types/MenuItem";
 import { MenuMobile } from "./header/menu-mobile";
 import { MenuDesktop } from "./header/menu-desktop";
+import { data } from "@/data";
 
 export function Header() {
-  const menu: MenuItem[] = [
-    { label: "Camisetas", link: "/categorias/camisetas" },
-    { label: "Acessórios", link: "/categorias/acessorios" },
-    { label: "Kits B7Web", link: "/categorias/kits" },
-    { label: "Eletrônicos", link: "/categorias/eletronicos" },
-  ];
+  const menu: MenuItem[] = data.menu;
 
   const [openMenu, setOpenMenu] = useState(false);
 

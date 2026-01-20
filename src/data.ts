@@ -35,4 +35,10 @@ export const data = {
       liked: false,
     },
   ],
+  menu: [
+    { label: "Camisetas", link: "/categorias/camisetas" },
+    { label: "Acessórios", link: "/categorias/acessorios" },
+    { label: "Kits B7Web", link: "/categorias/kits" },
+    { label: "Eletrônicos", link: "/categorias/eletronicos" },
+  ],
 };
