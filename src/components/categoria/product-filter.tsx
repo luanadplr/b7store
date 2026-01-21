@@ -5,6 +5,7 @@ import { data } from "@/data";
 import { useQueryString } from "@/hooks/use-querystring";
 import { ChangeEvent, useState } from "react";
 import { HiAdjustments } from "react-icons/hi";
+import { FilterGroup } from "./filter-group";
 
 export function ProductFilter() {
   const querystring = useQueryString();
@@ -44,7 +45,7 @@ export function ProductFilter() {
             <option value={"selling"}>Mais vendidos</option>
           </select>
           <button
-            className="flex h-14 flex-1 cursor-pointer items-center justify-between rounded-sm border border-gray-200 bg-white px-6 text-gray-500 md:hidden"
+            className={`flex h-14 flex-1 cursor-pointer items-center justify-between rounded-sm border border-gray-200 px-6 md:hidden ${openFilter ? "bg-blue-500 text-white" : "bg-white text-gray-500"}`}
             onClick={handleOpenFilter}
           >
             Filtrar <HiAdjustments />
@@ -52,10 +53,9 @@ export function ProductFilter() {
         </div>
       </div>
       <div className="mt-8 flex flex-col gap-4 md:flex-row md:gap-8">
-        <div
-          className={`${openFilter ? "block" : "hidden"} bg-red-100 md:block md:w-72`}
-        >
-          Filtro
+        <div className={`${openFilter ? "block" : "hidden"} md:block md:w-72`}>
+          <FilterGroup id="tech" name="Tecnologias" />
+          <FilterGroup id="color" name="Cores" />
         </div>
         <div className="grid flex-1 grid-cols-1 gap-3 md:grid-cols-3">
           {list.map((item) => (
