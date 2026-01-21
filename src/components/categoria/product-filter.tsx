@@ -2,15 +2,23 @@
 
 import { ProductItem } from "@/components/products/product-item";
 import { data } from "@/data";
-import { useState } from "react";
+import { useQueryString } from "@/hooks/use-querystring";
+import { ChangeEvent, useState } from "react";
 import { HiAdjustments } from "react-icons/hi";
 
 export function ProductFilter() {
+  const querystring = useQueryString();
   const list = data.products;
   const [openFilter, setOpenFilter] = useState(false);
 
   const handleOpenFilter = () => {
     setOpenFilter(!openFilter);
+  };
+
+  const order = querystring.get("order") ?? "views";
+
+  const handleSelectedChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    querystring.set("order", event.target.value);
   };
 
   return (
@@ -22,6 +30,8 @@ export function ProductFilter() {
         </h2>
         <div className="flex gap-5 md:mt-0 md:w-70">
           <select
+            defaultValue={order}
+            onChange={handleSelectedChange}
             className="h-14 flex-1 cursor-pointer rounded-sm border border-gray-200 bg-white px-6 text-gray-500"
             style={{
               appearance: "none",
@@ -29,7 +39,9 @@ export function ProductFilter() {
               MozAppearance: "none",
             }}
           >
-            <option>Ordenar por </option>
+            <option value={"views"}>Mais populares</option>
+            <option value={"price"}>Menores valores</option>
+            <option value={"selling"}>Mais vendidos</option>
           </select>
           <button
             className="flex h-14 flex-1 cursor-pointer items-center justify-between rounded-sm border border-gray-200 bg-white px-6 text-gray-500 md:hidden"
