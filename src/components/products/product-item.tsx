@@ -36,7 +36,7 @@ export function ProductItem({ data }: { data: Product }) {
             alt={data.label}
             width={200}
             height={200}
-            quality={100}
+            quality={75}
             className="h-48 max-w-full"
           />
         </Link>
